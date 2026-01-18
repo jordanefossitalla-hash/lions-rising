@@ -74,6 +74,7 @@ export const translations: Translations = {
   // Gallery
   'gallery.title': { fr: 'Galerie', en: 'Gallery' },
   'gallery.subtitle': { fr: "Découvrez la vie à l'académie en images", en: 'Discover life at the academy in pictures' },
+  'gallery.viewMore': { fr: 'Voir toute la galerie', en: 'View full gallery' },
   
   // CTA
   'cta.title': { fr: 'Prêt à rejoindre l\'élite ?', en: 'Ready to join the elite?' },
