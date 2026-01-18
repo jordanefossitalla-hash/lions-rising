@@ -3,7 +3,10 @@ import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { AboutSection } from '@/components/sections/AboutSection';
+import { ServicesSection } from '@/components/sections/ServicesSection';
 import { ProgramsSection } from '@/components/sections/ProgramsSection';
+import { StrengthsSection } from '@/components/sections/StrengthsSection';
+import { VideoSection } from '@/components/sections/VideoSection';
 import { GallerySection } from '@/components/sections/GallerySection';
 import { CTASection } from '@/components/sections/CTASection';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -15,7 +18,10 @@ const Index = () => {
       <main>
         <HeroSection />
         <AboutSection />
+        <ServicesSection />
         <ProgramsSection />
+        <StrengthsSection />
+        <VideoSection />
         <GallerySection />
         <CTASection />
         <ContactSection />

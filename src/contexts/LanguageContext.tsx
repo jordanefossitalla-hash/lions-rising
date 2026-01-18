@@ -78,6 +78,50 @@ export const translations: Translations = {
   // CTA
   'cta.title': { fr: 'Prêt à rejoindre l\'élite ?', en: 'Ready to join the elite?' },
   'cta.subtitle': { fr: 'Inscrivez votre enfant aux prochaines sessions d\'essai et donnez-lui la chance de réaliser son rêve.', en: 'Register your child for the next trial sessions and give them the chance to achieve their dream.' },
+
+  // Services
+  'services.badge': { fr: 'Nos Prestations', en: 'Our Services' },
+  'services.title': { fr: 'Un Accompagnement Complet', en: 'Complete Support' },
+  'services.subtitle': { fr: 'De la détection au placement professionnel, nous accompagnons chaque talent à chaque étape de son parcours.', en: 'From detection to professional placement, we support each talent at every step of their journey.' },
+  'services.detection.title': { fr: 'Détection', en: 'Detection' },
+  'services.detection.desc': { fr: 'Identification des jeunes talents lors de sessions ouvertes et partenariats avec les écoles locales.', en: 'Identifying young talents through open sessions and partnerships with local schools.' },
+  'services.initiation.title': { fr: 'Initiation', en: 'Initiation' },
+  'services.initiation.desc': { fr: 'Premiers pas dans le football avec apprentissage des fondamentaux techniques et du jeu collectif.', en: 'First steps in football with learning technical fundamentals and team play.' },
+  'services.preformation.title': { fr: 'Préformation', en: 'Pre-training' },
+  'services.preformation.desc': { fr: 'Développement avancé des compétences techniques, tactiques et physiques adaptées à l\'âge.', en: 'Advanced development of technical, tactical and physical skills adapted to age.' },
+  'services.formation.title': { fr: 'Formation', en: 'Training' },
+  'services.formation.desc': { fr: 'Programme intensif préparant les joueurs au niveau professionnel avec suivi personnalisé.', en: 'Intensive program preparing players for professional level with personalized follow-up.' },
+  'services.placement.title': { fr: 'Placement', en: 'Placement' },
+  'services.placement.desc': { fr: 'Mise en relation avec clubs nationaux et internationaux pour lancer les carrières professionnelles.', en: 'Connecting with national and international clubs to launch professional careers.' },
+  'services.representation.title': { fr: 'Représentation', en: 'Representation' },
+  'services.representation.desc': { fr: 'Accompagnement juridique et conseil de carrière pour protéger les intérêts des jeunes talents.', en: 'Legal support and career advice to protect the interests of young talents.' },
+
+  // Strengths
+  'strengths.badge': { fr: 'Nos Atouts', en: 'Our Strengths' },
+  'strengths.title': { fr: 'Pourquoi Choisir BM Academy ?', en: 'Why Choose BM Academy?' },
+  'strengths.training': { fr: 'Entraînements réguliers', en: 'Regular training' },
+  'strengths.coaches': { fr: 'Encadreurs qualifiés', en: 'Qualified coaches' },
+  'strengths.equipment': { fr: 'Matériel de pointe', en: 'Top equipment' },
+  'strengths.competitions': { fr: 'Compétitions régulières', en: 'Regular competitions' },
+  'strengths.partnerships': { fr: 'Partenariats fiables', en: 'Reliable partnerships' },
+  'strengths.tournaments': { fr: 'Voyages pour tournois', en: 'Tournament trips' },
+  'strengths.staff': { fr: 'Personnel motivé', en: 'Motivated staff' },
+  'strengths.management': { fr: 'Management efficace', en: 'Efficient management' },
+  'strengths.categories.title': { fr: 'Toutes les Catégories d\'Âge', en: 'All Age Categories' },
+  'strengths.categories.subtitle': { fr: 'Formation adaptée de 10 à 18 ans', en: 'Tailored training from 10 to 18 years' },
+  'strengths.boys': { fr: 'Garçons', en: 'Boys' },
+  'strengths.girls': { fr: 'Filles', en: 'Girls' },
+
+  // Video
+  'video.badge': { fr: 'Vidéo Présentation', en: 'Presentation Video' },
+  'video.title': { fr: 'Découvrez Notre Académie', en: 'Discover Our Academy' },
+  'video.subtitle': { fr: 'Plongez au cœur de BM Academy Sport et vivez l\'expérience de nos jeunes talents au quotidien.', en: 'Dive into the heart of BM Academy Sport and experience the daily life of our young talents.' },
+  'video.placeholder.title': { fr: 'Vidéo de Présentation', en: 'Presentation Video' },
+  'video.placeholder.subtitle': { fr: 'La vidéo sera bientôt disponible ici', en: 'Video coming soon' },
+  'video.description': { fr: 'Cette vidéo de 20 minutes vous fait découvrir les infrastructures, les méthodes d\'entraînement, l\'équipe encadrante et le quotidien de nos jeunes footballeurs. Une immersion totale dans l\'univers BM Academy Sport.', en: 'This 20-minute video takes you through the facilities, training methods, coaching staff and daily life of our young footballers. A total immersion in the BM Academy Sport universe.' },
+
+  // Footer
+  'footer.fecafoot': { fr: 'En soutien à la vision de la FECAFOOT', en: 'Supporting the FECAFOOT vision' },
 };
 
 interface LanguageContextType {

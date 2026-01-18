@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Youtube, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import logo from '@/assets/logo-bmas.png';
+import fecafootLogo from '@/assets/fecafoot-logo.png';
 
 export function Footer() {
   const { t } = useLanguage();
@@ -26,9 +27,19 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <img src={logo} alt="BM Academy Sport" className="h-20 w-auto mb-4" />
-            <p className="text-secondary/70 text-sm leading-relaxed mb-6">
+            <div className="flex items-center gap-4 mb-4">
+              <img src={logo} alt="BM Academy Sport" className="h-16 w-auto" />
+              <div className="h-12 w-px bg-secondary/20" />
+              <div className="flex flex-col items-center">
+                <img src={fecafootLogo} alt="FECAFOOT" className="h-12 w-auto" />
+                <span className="text-[10px] text-secondary/50 mt-1">FECAFOOT</span>
+              </div>
+            </div>
+            <p className="text-secondary/70 text-sm leading-relaxed mb-4">
               Former la nouvelle génération de Lions Indomptables avec excellence, discipline et passion.
+            </p>
+            <p className="text-energy/80 text-xs font-medium mb-4 italic">
+              {t('footer.fecafoot')}
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
