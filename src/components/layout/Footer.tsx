@@ -27,19 +27,19 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-4 mb-4">
-              <img src={logo} alt="BM Academy Sport" className="h-16 w-auto" />
-              <div className="h-12 w-px bg-secondary/20" />
-              <div className="flex flex-col items-center">
-                <img src={fecafootLogo} alt="FECAFOOT" className="h-12 w-auto" />
-                <span className="text-[10px] text-secondary/50 mt-1">FECAFOOT</span>
+            <div className="flex items-center gap-4 mb-6">
+              <img src={logo} alt="BM Academy Sport" className="h-20 w-auto" />
+              <div className="h-16 w-px bg-energy/30" />
+              <div className="flex flex-col items-center bg-white/10 rounded-lg px-3 py-2">
+                <img src={fecafootLogo} alt="FECAFOOT - Fédération Camerounaise de Football" className="h-16 w-auto" />
+                <span className="text-[10px] text-energy font-semibold mt-1">FECAFOOT</span>
               </div>
             </div>
-            <p className="text-secondary/70 text-sm leading-relaxed mb-4">
+            <p className="text-secondary/70 text-sm leading-relaxed mb-3">
               Former la nouvelle génération de Lions Indomptables avec excellence, discipline et passion.
             </p>
-            <p className="text-energy/80 text-xs font-medium mb-4 italic">
-              {t('footer.fecafoot')}
+            <p className="text-energy font-medium text-sm mb-4">
+              ⚽ {t('footer.fecafoot')}
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
