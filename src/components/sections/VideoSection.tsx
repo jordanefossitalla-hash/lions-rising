@@ -1,80 +1,87 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Play, Video } from 'lucide-react';
+import { Video, Award, Star, Users, Play } from 'lucide-react';
 
 export function VideoSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="video" className="py-20 md:py-28 bg-muted/50">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-block px-4 py-2 bg-accent/10 text-accent font-semibold rounded-full text-sm mb-4">
-            <Video className="w-4 h-4 inline mr-2" />
-            {t('video.badge')}
-          </span>
-          <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4">
-            {t('video.title')}
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            {t('video.subtitle')}
-          </p>
-        </div>
+    <section id="video" className="py-20 lg:py-32 bg-primary relative overflow-hidden" aria-labelledby="video-title">
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+         <div className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-energy blur-[120px]" />
+         <div className="absolute top-[40%] right-[0%] w-[40%] h-[60%] rounded-full bg-accent blur-[100px]" />
+      </div>
 
-        {/* Video Placeholder */}
-        <div className="max-w-4xl mx-auto">
-          <div className="relative aspect-video rounded-2xl overflow-hidden bg-primary shadow-2xl shadow-primary/20">
-            {/* Placeholder Content */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary to-primary/80">
-              {/* Decorative Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:20px_20px]" />
-              </div>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          
+          {/* Left Column: Video Container */}
+          <div className="w-full lg:w-3/5 relative group">
+             {/* Abstract Frame Decoration */}
+             <div className="absolute -inset-1 bg-gradient-to-r from-energy via-accent to-energy rounded-2xl sm:rounded-3xl opacity-75 blur-sm group-hover:opacity-100 group-hover:blur-md transition-all duration-700 animate-gradient-xy"></div>
+             
+             <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 bg-black">
+                <iframe
+                  src="https://www.youtube.com/embed/ZcUatE9VCsI"
+                  title="BM Academy Sport - Au cœur de l'action"
+                  className="absolute inset-0 w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+             </div>
 
-              {/* Play Button */}
-              <div className="relative z-10 group cursor-pointer">
-                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-energy/20 flex items-center justify-center mb-6 group-hover:bg-energy/30 transition-all duration-300 group-hover:scale-110">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-energy flex items-center justify-center shadow-lg shadow-energy/30 group-hover:shadow-energy/50 transition-all">
-                    <Play className="w-8 h-8 md:w-10 md:h-10 text-primary ml-1" fill="currentColor" />
-                  </div>
-                </div>
-              </div>
+             {/* Floating Stats Card - Desktop Only */}
+             <div className="hidden lg:flex absolute -bottom-8 -right-8 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-xl animate-float">
+               <div className="flex items-center gap-4">
+                 <div className="w-12 h-12 rounded-full bg-energy flex items-center justify-center">
+                   <Play className="w-6 h-6 text-primary fill-current" />
+                 </div>
+                 <div>
+                   <p className="text-white font-bold text-lg">Immersion Totale</p>
+                   <p className="text-white/70 text-sm">Découvrez notre univers</p>
+                 </div>
+               </div>
+             </div>
+          </div>
 
-              {/* Text */}
-              <h3 className="text-xl md:text-2xl font-bold text-secondary mb-2 text-center px-4">
-                {t('video.placeholder.title')}
-              </h3>
-              <p className="text-secondary/60 text-center max-w-md px-4">
-                {t('video.placeholder.subtitle')}
-              </p>
-
-              {/* Duration Badge */}
-              <div className="mt-6 px-4 py-2 bg-secondary/10 rounded-full">
-                <span className="text-secondary text-sm font-medium">
-                  🎬 20 min
-                </span>
-              </div>
+          {/* Right Column: Content & Description */}
+          <div className="w-full lg:w-2/5 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-sm font-medium text-energy mb-6 border border-white/10">
+              <Video className="w-4 h-4" />
+              <span>{t('video.badge')}</span>
             </div>
 
-            {/* Video Embed Placeholder - Uncomment and add YouTube URL when ready */}
-            {/* 
-            <iframe
-              src="https://www.youtube.com/embed/VIDEO_ID"
-              title="Présentation BM Academy Sport"
-              className="absolute inset-0 w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-            */}
+            <h2 id="video-title" className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
+              {t('video.title')}
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-energy to-yellow-300 mt-2">
+                 L'Excellence en Images
+              </span>
+            </h2>
+
+            {/* Features List */}
+            <div className="space-y-4 mb-8">
+              {[
+                { icon: Star, text: "Formation de haut niveau", color: "text-yellow-400" },
+                { icon: Users, text: "Encadrement professionnel", color: "text-blue-400" },
+                { icon: Award, text: "Infrastructures de qualité", color: "text-green-400" }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center justify-center lg:justify-start gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                  <item.icon className={`w-5 h-5 ${item.color}`} />
+                  <span className="text-white font-medium">{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+               <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-energy hover:bg-energy/90 text-primary font-bold rounded-xl transition-all hover:scale-105 shadow-lg shadow-energy/20 cursor-default">
+                 <Play className="w-5 h-5 fill-current" />
+                 Voir plus de vidéos
+               </button>
+            </div>
           </div>
 
-          {/* Video Description */}
-          <div className="mt-8 text-center">
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('video.description')}
-            </p>
-          </div>
         </div>
       </div>
     </section>

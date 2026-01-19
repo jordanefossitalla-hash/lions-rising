@@ -49,7 +49,7 @@ export const translations: Translations = {
   // About
   'about.title': { fr: 'Notre Vision', en: 'Our Vision' },
   'about.subtitle': { fr: "L'excellence au service du football camerounais", en: 'Excellence in service of Cameroonian football' },
-  'about.description': { fr: "BM Academy Sport Yaoundé est née de la passion de son fondateur, Bakari Mahamat, pour le développement du football camerounais. Située au cœur de la Briqueterie à Yaoundé, notre académie forme plus de 70 jeunes talents âgés de 10 à 18 ans.", en: "BM Academy Sport Yaoundé was born from the passion of its founder, Bakari Mahamat, for the development of Cameroonian football. Located in the heart of Briqueterie in Yaoundé, our academy trains over 70 young talents aged 10 to 18." },
+  'about.description': { fr: "BM Academy Sport Yaoundé est née de la passion de son fondateur, Bakari Mahaman, pour le développement du football camerounais. Située au cœur de la Briqueterie à Yaoundé, notre académie forme plus de 70 jeunes talents âgés de 10 à 18 ans.", en: "BM Academy Sport Yaoundé was born from the passion of its founder, Bakari Mahaman, for the development of Cameroonian football. Located in the heart of Briqueterie in Yaoundé, our academy trains over 70 young talents aged 10 to 18." },
   'about.mission': { fr: "Notre mission : révéler les futurs Lions Indomptables en alliant rigueur technique, préparation physique d'excellence et éducation aux valeurs du sport.", en: "Our mission: to reveal the future Indomitable Lions by combining technical rigor, excellent physical preparation and education in sports values." },
   
   // Contact

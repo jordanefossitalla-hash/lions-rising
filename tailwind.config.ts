@@ -7,7 +7,11 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2rem",
+      },
       screens: {
         sm: "640px",
         md: "768px",
@@ -15,6 +19,14 @@ export default {
         xl: "1280px",
         "2xl": "1400px",
       },
+    },
+    screens: {
+      'xs': '375px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
     },
     extend: {
       fontFamily: {
@@ -50,6 +62,10 @@ export default {
         energy: {
           DEFAULT: "hsl(var(--energy))",
           foreground: "hsl(var(--energy-foreground))",
+        },
+        field: {
+          DEFAULT: "hsl(var(--field))",
+          foreground: "hsl(var(--field-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

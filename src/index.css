@@ -36,6 +36,10 @@
     --energy: 35 95% 55%;
     --energy-foreground: 210 100% 15%;
 
+    /* Field Green */
+    --field: 145 60% 35%;
+    --field-foreground: 0 0% 100%;
+
     /* Destructive: Red Star */
     --destructive: 0 75% 50%;
     --destructive-foreground: 0 0% 100%;
@@ -118,44 +122,62 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     @apply font-bold tracking-tight;
+    text-wrap: balance;
+  }
+
+  /* Better focus styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-energy ring-offset-2 ring-offset-background;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-energy/30 text-foreground;
   }
 }
 
 @layer components {
-  /* Hero button variants */
+  /* Hero button variants - Mobile first */
   .btn-hero-primary {
-    @apply bg-energy text-primary font-bold px-8 py-4 rounded-lg transition-all duration-300;
+    @apply bg-energy text-primary font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-lg transition-all duration-300;
     @apply hover:shadow-glow hover:scale-105 hover:brightness-110;
+    @apply active:scale-95 focus-visible:ring-2 focus-visible:ring-energy focus-visible:ring-offset-2;
   }
 
   .btn-hero-secondary {
-    @apply bg-transparent border-2 border-secondary text-secondary font-bold px-8 py-4 rounded-lg;
+    @apply bg-transparent border-2 border-secondary text-secondary font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-lg;
     @apply transition-all duration-300 hover:bg-secondary hover:text-primary;
+    @apply active:scale-95;
   }
 
   .btn-hero-accent {
-    @apply bg-accent text-accent-foreground font-bold px-8 py-4 rounded-lg;
+    @apply bg-accent text-accent-foreground font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-lg;
     @apply transition-all duration-300 hover:brightness-110 hover:scale-105;
+    @apply active:scale-95;
   }
 
   /* Card variants */
   .card-program {
-    @apply bg-card rounded-xl p-6 shadow-card transition-all duration-300;
+    @apply bg-card rounded-xl p-4 sm:p-6 shadow-card transition-all duration-300;
     @apply hover:shadow-glow hover:-translate-y-2;
   }
 
   .card-glass {
-    @apply bg-secondary/10 backdrop-blur-md rounded-xl p-6 border border-secondary/20;
+    @apply bg-secondary/10 backdrop-blur-md rounded-xl p-4 sm:p-6 border border-secondary/20;
   }
 
   /* Section styling */
@@ -178,29 +200,31 @@
     background: var(--gradient-overlay);
   }
 
-  /* WhatsApp floating button */
+  /* WhatsApp floating button - Improved mobile */
   .whatsapp-float {
-    @apply fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full flex items-center justify-center;
+    @apply fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center;
     @apply bg-[#25D366] text-secondary shadow-lg transition-all duration-300;
     @apply hover:scale-110 hover:shadow-xl animate-bounce-gentle;
+    @apply active:scale-95;
   }
 
   /* Stats counter */
   .stat-card {
-    @apply text-center p-6;
+    @apply text-center p-4 sm:p-6;
   }
 
   .stat-number {
-    @apply text-5xl md:text-6xl font-black text-energy;
+    @apply text-4xl sm:text-5xl md:text-6xl font-black text-energy;
   }
 
   .stat-label {
-    @apply text-sm md:text-base text-secondary/80 uppercase tracking-wider mt-2;
+    @apply text-xs sm:text-sm md:text-base text-secondary/80 uppercase tracking-wider mt-2;
   }
 
-  /* Navigation */
+  /* Navigation - Mobile first */
   .nav-link {
     @apply relative text-secondary/90 font-medium transition-all duration-300 hover:text-energy;
+    @apply py-1 px-1;
   }
 
   .nav-link::after {
@@ -212,13 +236,14 @@
     @apply w-full;
   }
 
-  /* Language switcher */
+  /* Language switcher - Mobile optimized */
   .lang-switch {
-    @apply flex items-center gap-1 text-sm font-medium text-secondary/80;
+    @apply flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm font-medium text-secondary/80;
   }
 
   .lang-switch button {
-    @apply px-2 py-1 rounded transition-all duration-200;
+    @apply px-1.5 sm:px-2 py-0.5 sm:py-1 rounded transition-all duration-200;
+    @apply focus-visible:ring-2 focus-visible:ring-energy;
   }
 
   .lang-switch button.active {
@@ -227,6 +252,31 @@
 
   .lang-switch button:not(.active):hover {
     @apply text-secondary;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-sm {
+    @apply text-xs sm:text-sm;
+  }
+
+  .text-responsive-base {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-lg {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  .text-responsive-3xl {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
   }
 }
 
@@ -316,6 +366,50 @@
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Gallery specific animations */
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out forwards;
+  }
+
+  .gallery-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
   /* Gradient backgrounds */
   .bg-gradient-hero {
     background: var(--gradient-hero);
@@ -327,5 +421,53 @@
 
   .bg-gradient-field {
     background: var(--gradient-field);
+  }
+
+  /* Better touch targets for mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Safe area padding for notch devices */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* Custom breakpoint for extra small screens */
+  @screen xs {
+    .xs\:block {
+      display: block;
+    }
+    .xs\:hidden {
+      display: none;
+    }
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
