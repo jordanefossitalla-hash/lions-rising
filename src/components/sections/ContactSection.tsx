@@ -40,12 +40,12 @@ export function ContactSection() {
     {
       icon: Phone,
       title: 'Téléphone',
-      content: '+237 699 00 00 00\n+237 677 00 00 00',
+      content: '+237 693 752 118\n+237 682 672 792',
     },
     {
       icon: Mail,
       title: 'Email',
-      content: 'contact@bmacademysport.com\ninscription@bmacademysport.com',
+      content: 'bmasacademysport@gmail.com',
     },
     {
       icon: Clock,
@@ -99,18 +99,26 @@ export function ContactSection() {
             ))}
 
             {/* Map */}
-            <div className="rounded-lg sm:rounded-xl overflow-hidden h-40 sm:h-48 bg-muted relative">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.7!2d11.5!3d3.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTEnMDAuMCJOIDExwrAzMCcwMC4wIkU!5e0!3m2!1sfr!2scm!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Localisation BM Academy Sport Yaoundé"
-                className="grayscale hover:grayscale-0 transition-all duration-500"
-              />
+            <div className="group relative rounded-xl sm:rounded-2xl overflow-hidden h-52 sm:h-64 bg-gradient-to-br from-primary/20 to-energy/20 p-1 shadow-lg hover:shadow-xl transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary via-energy to-accent opacity-20 group-hover:opacity-30 transition-opacity duration-500 rounded-xl sm:rounded-2xl"></div>
+              <div className="relative h-full w-full rounded-lg sm:rounded-xl overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1990.4!2d11.506652!3d3.878223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTInNDEuNiJOIDExwrAzMCcyMy45IkU!5e0!3m2!1sfr!2scm!4v1737561600000"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Localisation BM Academy Sport Yaoundé"
+                  className="grayscale-[30%] group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
+                />
+              </div>
+              {/* Map Overlay Label */}
+              <div className="absolute bottom-3 left-3 right-3 bg-background/90 backdrop-blur-sm rounded-lg px-3 py-2 flex items-center gap-2 shadow-md opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+                <span className="text-xs sm:text-sm font-medium text-foreground truncate">BM Academy Sport - Yaoundé</span>
+              </div>
             </div>
           </div>
 
