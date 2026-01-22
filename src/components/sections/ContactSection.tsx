@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { Player } from '@lottiefiles/react-lottie-player';
 import { useLanguage } from '@/contexts/LanguageContext';
+import emailAnimation from '@/assets/lottie/email.json';
 
 export function ContactSection() {
   const { t } = useLanguage();
@@ -57,6 +59,14 @@ export function ContactSection() {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
+          <div className="flex justify-center mb-4">
+            <Player
+              autoplay
+              loop
+              src={emailAnimation}
+              className="w-20 h-20 sm:w-24 sm:h-24"
+            />
+          </div>
           <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-energy/10 text-energy font-semibold rounded-full text-xs sm:text-sm mb-3 sm:mb-4">
             {t('nav.contact')}
           </span>

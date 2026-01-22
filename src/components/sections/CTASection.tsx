@@ -1,5 +1,8 @@
 import { ArrowRight, Calendar, Users, Award } from 'lucide-react';
+import { Player } from '@lottiefiles/react-lottie-player';
 import { useLanguage } from '@/contexts/LanguageContext';
+import celebrationAnimation from '@/assets/lottie/celebration.json';
+import trophyAnimation from '@/assets/lottie/trophy.json';
 
 export function CTASection() {
   const { t } = useLanguage();
@@ -15,6 +18,24 @@ export function CTASection() {
       {/* Decorative Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] md:w-[800px] h-[400px] sm:h-[600px] md:h-[800px] bg-energy/5 rounded-full blur-3xl" />
+      </div>
+      
+      {/* Lottie Celebration Animation */}
+      <div className="absolute top-10 left-4 sm:left-10 hidden lg:block opacity-70">
+        <Player
+          autoplay
+          loop
+          src={trophyAnimation}
+          className="w-32 h-32"
+        />
+      </div>
+      <div className="absolute bottom-10 right-4 sm:right-10 hidden lg:block opacity-70">
+        <Player
+          autoplay
+          loop
+          src={celebrationAnimation}
+          className="w-28 h-28"
+        />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">

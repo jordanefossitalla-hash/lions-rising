@@ -1,4 +1,5 @@
 import { GraduationCap, Dumbbell, Brain, Star } from 'lucide-react';
+import { Player } from '@lottiefiles/react-lottie-player';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export function ProgramsSection() {
@@ -63,17 +64,29 @@ export function ProgramsSection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
-          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-energy/20 text-energy font-semibold rounded-full text-xs sm:text-sm mb-3 sm:mb-4">
-            Formation
-          </span>
-          <h2 id="programs-title" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-secondary mb-3 sm:mb-4">
-            {t('programs.title')}
-          </h2>
-          <p className="text-base sm:text-lg text-secondary/70 px-2">
-            {t('programs.subtitle')}
-          </p>
+        {/* Section Header + Illustration */}
+        <div className="max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          <div className="text-center lg:text-left flex-1">
+            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-energy/20 text-energy font-semibold rounded-full text-xs sm:text-sm mb-3 sm:mb-4">
+              Formation
+            </span>
+            <h2 id="programs-title" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-secondary mb-3 sm:mb-4">
+              {t('programs.title')}
+            </h2>
+            <p className="text-base sm:text-lg text-secondary/70 px-2 lg:px-0">
+              {t('programs.subtitle')}
+            </p>
+          </div>
+
+          {/* Lottie Animation */}
+          <div className="flex flex-1 justify-center lg:justify-end mt-6 lg:mt-0">
+            <Player
+              autoplay
+              loop
+              src="https://lottie.host/e4bd0110-3f70-4d5c-849c-3a4d6324ada3/nhgpVKDfLu.json"
+              className="w-52 sm:w-64 md:w-72 lg:w-80 h-auto drop-shadow-2xl"
+            />
+          </div>
         </div>
 
         {/* Programs Grid - Improved responsive */}

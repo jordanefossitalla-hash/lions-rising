@@ -1,7 +1,9 @@
 import { ChevronDown, Trophy, Users, Calendar } from 'lucide-react';
+import { Player } from '@lottiefiles/react-lottie-player';
 import { useLanguage } from '@/contexts/LanguageContext';
 import heroBg from '@/assets/hero-bg.jpg';
 import logo from '@/assets/logo-bmas.png';
+import footballAnimation from '@/assets/lottie/football.json';
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -33,6 +35,16 @@ export function HeroSection() {
       <div className="absolute top-1/4 left-4 sm:left-10 w-20 sm:w-32 h-20 sm:h-32 border border-energy/20 rounded-full animate-pulse opacity-30" />
       <div className="absolute bottom-1/3 right-4 sm:right-10 w-32 sm:w-48 h-32 sm:h-48 border border-energy/20 rounded-full animate-pulse opacity-20" />
       <div className="absolute top-1/2 right-1/4 w-16 sm:w-24 h-16 sm:h-24 border border-secondary/10 rounded-full animate-pulse opacity-10 hidden md:block" />
+      
+      {/* Lottie Animation - Football */}
+      <div className="absolute bottom-20 right-4 sm:right-10 lg:right-20 hidden md:block opacity-80">
+        <Player
+          autoplay
+          loop
+          src={footballAnimation}
+          className="w-32 lg:w-48 h-32 lg:h-48"
+        />
+      </div>
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-12">
