@@ -95,30 +95,19 @@ export function HeroSection() {
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className="card-glass text-center py-3 sm:py-4 md:py-6 px-2 sm:px-4 transform hover:scale-105 transition-transform duration-300"
+                className="card-glass text-center py-3 sm:py-4 md:py-6 px-2 sm:px-4 transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center"
                 style={{ animationDelay: `${0.8 + index * 0.1}s` }}
               >
-                <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-energy mx-auto mb-1 sm:mb-2" />
+                <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-energy mb-1 sm:mb-2" />
                 <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-secondary">
                   {stat.number}
                 </div>
-                <div className="text-[10px] sm:text-xs md:text-sm text-secondary/60 mt-0.5 sm:mt-1 line-clamp-2">
+                <div className="text-[10px] sm:text-xs md:text-sm text-secondary/60 mt-0.5 sm:mt-1 line-clamp-2 text-center">
                   {stat.label}
                 </div>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <a 
-            href="#about" 
-            className="text-secondary/50 hover:text-energy transition-colors block p-2"
-            aria-label="Défiler vers la section suivante"
-          >
-            <ChevronDown size={28} className="sm:w-8 sm:h-8" />
-          </a>
         </div>
       </div>
     </section>

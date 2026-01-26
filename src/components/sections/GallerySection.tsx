@@ -8,6 +8,8 @@ import team4 from '@/assets/team-4.jpg';
 import team5 from '@/assets/team-5.jpg';
 import teamVan from '@/assets/team-van.jpg';
 import teamCollective from '@/assets/hero-bg.jpg';
+import newImage1 from '@/assets/WhatsApp Image 2026-01-22 at 18.24.45.jpeg';
+import newImage2 from '@/assets/WhatsApp Image 2026-01-22 at 18.24.46.jpeg';
 
 type Category = 'Tous' | 'Équipe' | 'Match' | 'Entraînement';
 
@@ -24,8 +26,10 @@ export function GallerySection() {
 
   const images: GalleryImage[] = [
     { src: team5, alt: 'Tous les joueurs BM Academy Sport', category: 'Équipe', featured: true },
+    { src: newImage1, alt: 'Moments forts à l\'académie', category: 'Entraînement' },
     { src: team1, alt: 'Équipe U15 BM Academy Sport', category: 'Match' },
     { src: teamVan, alt: 'Transport officiel BM Academy', category: 'Équipe' },
+    { src: newImage2, alt: 'Jeunes talents en action', category: 'Entraînement', featured: true },
     { src: team4, alt: 'Équipe U13 en compétition', category: 'Match', featured: true },
     { src: team3, alt: 'Match amical inter-équipes', category: 'Match' },
     { src: team2, alt: 'Entraînement technique', category: 'Entraînement' },
@@ -76,11 +80,12 @@ export function GallerySection() {
         {/* Mosaic Grid Gallery */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 auto-rows-[200px]">
           {images.map((image, index) => {
-            // Elegant 3-column Mosaic Layout
+            // Elegant 3-column Mosaic Layout with new images
             const getGridClasses = () => {
               switch(index) {
                 case 0: return 'md:col-span-2 md:row-span-2'; // Team 5 (Main) - Large
-                case 6: return 'md:col-span-3 md:row-span-1'; // HeroBg - Wide Bottom Banner
+                case 4: return 'md:col-span-2 md:row-span-1'; // New Image 2 - Wide
+                case 8: return 'md:col-span-3 md:row-span-1'; // HeroBg - Wide Bottom Banner
                 default: return 'md:col-span-1 md:row-span-1'; // Others - Standard Tiles
               }
             };
