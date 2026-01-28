@@ -1,6 +1,7 @@
 import { ChevronDown, Trophy, Users, Calendar } from 'lucide-react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { AnimatedCounter } from '@/components/AnimatedCounter';
 import heroBg from '@/assets/hero-bg.jpg';
 import logo from '@/assets/logo-bmas.png';
 import footballAnimation from '@/assets/lottie/football.json';
@@ -90,22 +91,16 @@ export function HeroSection() {
             </a>
           </div>
 
-          {/* Stats - Improved responsive grid */}
+          {/* Stats - Animated counters */}
           <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto">
             {stats.map((stat, index) => (
-              <div
+              <AnimatedCounter
                 key={stat.label}
-                className="card-glass text-center py-3 sm:py-4 md:py-6 px-2 sm:px-4 transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center"
-                style={{ animationDelay: `${0.8 + index * 0.1}s` }}
-              >
-                <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-energy mb-1 sm:mb-2" />
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-secondary">
-                  {stat.number}
-                </div>
-                <div className="text-[10px] sm:text-xs md:text-sm text-secondary/60 mt-0.5 sm:mt-1 line-clamp-2 text-center">
-                  {stat.label}
-                </div>
-              </div>
+                icon={stat.icon}
+                number={stat.number}
+                label={stat.label}
+                delay={index * 200}
+              />
             ))}
           </div>
         </div>
