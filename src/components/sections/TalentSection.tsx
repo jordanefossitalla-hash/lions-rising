@@ -1,6 +1,6 @@
 import { Star, Sparkles, Trophy } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import talentVideo from '@/assets/WhatsApp Video 2026-01-22 at 18.46.52.mp4';
+import talentVideo from '@/assets/talent-video.mp4';
 
 export function TalentSection() {
   const { t } = useLanguage();

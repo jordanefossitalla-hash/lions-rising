@@ -8,8 +8,8 @@ import team4 from '@/assets/team-4.jpg';
 import team5 from '@/assets/team-5.jpg';
 import teamVan from '@/assets/team-van.jpg';
 import teamCollective from '@/assets/hero-bg.jpg';
-import newImage1 from '@/assets/WhatsApp Image 2026-01-22 at 18.24.45.jpeg';
-import newImage2 from '@/assets/WhatsApp Image 2026-01-22 at 18.24.46.jpeg';
+import newImage1 from '@/assets/gallery-1.jpg';
+import newImage2 from '@/assets/gallery-2.jpg';
 
 type Category = 'Tous' | 'Équipe' | 'Match' | 'Entraînement';
 
