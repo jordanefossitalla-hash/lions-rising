@@ -8,8 +8,8 @@ import team4 from '@/assets/team-4.jpg';
 import team5 from '@/assets/team-5.jpg';
 import teamVan from '@/assets/team-van.jpg';
 import teamCollective from '@/assets/hero-bg.jpg';
-import newImage1 from '@/assets/gallery-1.jpg';
-import newImage2 from '@/assets/gallery-2.jpg';
+import gallery1 from '@/assets/gallery-1.jpg';
+import gallery2 from '@/assets/gallery-2.jpg';
 
 type Category = 'Tous' | 'Équipe' | 'Match' | 'Entraînement';
 
@@ -26,10 +26,10 @@ export function GallerySection() {
 
   const images: GalleryImage[] = [
     { src: team5, alt: 'Tous les joueurs BM Academy Sport', category: 'Équipe', featured: true },
-    { src: newImage1, alt: 'Moments forts à l\'académie', category: 'Entraînement' },
+    { src: gallery1, alt: 'Moments forts à l\'académie', category: 'Entraînement' },
     { src: team1, alt: 'Équipe U15 BM Academy Sport', category: 'Match' },
     { src: teamVan, alt: 'Transport officiel BM Academy', category: 'Équipe' },
-    { src: newImage2, alt: 'Jeunes talents en action', category: 'Entraînement', featured: true },
+    { src: gallery2, alt: 'Jeunes talents en action', category: 'Entraînement', featured: true },
     { src: team4, alt: 'Équipe U13 en compétition', category: 'Match', featured: true },
     { src: team3, alt: 'Match amical inter-équipes', category: 'Match' },
     { src: team2, alt: 'Entraînement technique', category: 'Entraînement' },

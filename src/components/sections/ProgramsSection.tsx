@@ -1,7 +1,7 @@
 import { GraduationCap, Dumbbell, Brain, Star } from 'lucide-react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { useLanguage } from '@/contexts/LanguageContext';
-import trainingAnimation from '@/assets/lottie/target.json';
+import targetAnimation from '@/assets/lottie/target.json';
 
 export function ProgramsSection() {
   const { t } = useLanguage();
@@ -84,7 +84,7 @@ export function ProgramsSection() {
             <Player
               autoplay
               loop
-              src={trainingAnimation}
+              src={targetAnimation}
               className="w-52 sm:w-64 md:w-72 lg:w-80 h-auto drop-shadow-2xl"
             />
           </div>
