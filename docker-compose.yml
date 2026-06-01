@@ -1,0 +1,10 @@
+services:
+  lions-rising:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lions-rising:latest
+    container_name: lions-rising
+    restart: unless-stopped
+    ports:
+      - "80:80"

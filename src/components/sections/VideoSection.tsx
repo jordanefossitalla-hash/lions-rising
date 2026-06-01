@@ -23,7 +23,7 @@ export function VideoSection() {
              
              <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 bg-black">
                 <iframe
-                  src="https://www.youtube.com/embed/ZcUatE9VCsI"
+                  src="https://www.youtube.com/embed/QW8V4oltKV8"
                   title="BM Academy Sport - Au cœur de l'action"
                   className="absolute inset-0 w-full h-full"
                   frameBorder="0"

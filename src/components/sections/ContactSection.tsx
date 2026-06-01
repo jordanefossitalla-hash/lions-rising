@@ -6,25 +6,70 @@ import emailAnimation from '@/assets/lottie/email.json';
 
 export function ContactSection() {
   const { t } = useLanguage();
+  const CONTACT_EMAIL = 'bmasacademysport@gmail.com';
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     subject: '',
     message: '',
+    website: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    // Reset form after delay
-    setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+
+    if (formData.website.trim() !== '') {
+      setSubmitError('Envoi bloque. Merci de reessayer.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          _subject: `Nouveau message BM Academy - ${formData.subject}`,
+          _autoresponse:
+            'Bonjour, nous avons bien recu votre message. Merci de votre interet pour BM Academy Sport Yaounde. Notre equipe vous repondra rapidement.',
+          _honey: formData.website,
+          _captcha: 'false',
+          _template: 'table',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur reseau lors de l\'envoi du message.');
+      }
+
+      const result = await response.json();
+      if (result?.success !== 'true') {
+        throw new Error(result?.message || 'Le service d\'envoi a refuse la demande.');
+      }
+
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '', website: '' });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Une erreur est survenue lors de l\'envoi.';
+      setSubmitError(message);
       setIsSubmitted(false);
-    }, 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -132,6 +177,13 @@ export function ContactSection() {
                   <p className="text-accent text-sm font-medium">Message envoyé avec succès ! Nous vous répondrons sous 24h.</p>
                 </div>
               )}
+
+              {/* Error Message */}
+              {submitError && (
+                <div className="mb-6 p-4 bg-destructive/10 border border-destructive/30 rounded-xl">
+                  <p className="text-destructive text-sm font-medium">{submitError}</p>
+                </div>
+              )}
               
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-4 sm:mb-5 md:mb-6">
                 <div>
@@ -218,13 +270,27 @@ export function ContactSection() {
                 />
               </div>
 
+              {/* Honeypot anti-spam field: must stay empty */}
+              <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="website">Site web</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={handleChange}
+                />
+              </div>
+
               <button
                 type="submit"
-                disabled={isSubmitted}
+                disabled={isSubmitting}
                 className="w-full btn-hero-primary flex items-center justify-center gap-2 text-sm sm:text-base py-3 sm:py-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-4 sm:w-5 h-4 sm:h-5" />
-                {t('contact.send')}
+                {isSubmitting ? 'Envoi en cours...' : t('contact.send')}
               </button>
             </form>
           </div>

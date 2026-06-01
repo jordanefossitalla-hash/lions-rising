@@ -64,6 +64,35 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
+## Docker deployment (VPS)
+
+This project can be deployed as a Docker container with Nginx serving the Vite build.
+
+### 1) Build and run with Docker Compose
+
+```sh
+docker compose up -d --build
+```
+
+The app will be available on port `80`.
+
+### 2) Stop the service
+
+```sh
+docker compose down
+```
+
+### 3) Re-deploy after updates
+
+```sh
+git pull
+docker compose up -d --build
+```
+
+### Optional: custom domain with reverse proxy
+
+For HTTPS and domain management on a VPS, place this container behind a reverse proxy (e.g. Nginx Proxy Manager, Traefik, or Caddy).
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { X, ZoomIn, ChevronLeft, ChevronRight, Play, Camera } from 'lucide-react';
+import { X, ZoomIn, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import team1 from '@/assets/team-1.jpg';
 import team2 from '@/assets/team-2.jpg';
 import team3 from '@/assets/team-3.jpg';
@@ -38,13 +38,38 @@ export function GallerySection() {
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setSelectedImage(null);
-    document.body.style.overflow = 'unset';
   };
+
+  useEffect(() => {
+    if (selectedImage === null) {
+      document.body.style.overflow = '';
+      return;
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+      if (event.key === 'ArrowRight') {
+        navigateImage('next');
+      }
+      if (event.key === 'ArrowLeft') {
+        navigateImage('prev');
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [selectedImage]);
 
   const navigateImage = (direction: 'prev' | 'next') => {
     if (selectedImage === null) return;
@@ -55,17 +80,17 @@ export function GallerySection() {
   };
 
   return (
-    <section id="gallery" className="py-16 sm:py-20 md:py-28 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden" aria-labelledby="gallery-title">
+    <section id="gallery" className="py-16 sm:py-20 md:py-28 bg-gradient-to-b from-background via-muted/40 to-background relative overflow-hidden" aria-labelledby="gallery-title">
       {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-energy/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute top-16 left-8 w-72 h-72 bg-energy/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-16 right-8 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/20 to-energy/20 backdrop-blur-sm border border-accent/20 rounded-full text-sm mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 border border-white/80 shadow-soft rounded-full text-sm mb-4 backdrop-blur-md">
             <Camera className="w-4 h-4 text-accent" />
-            <span className="font-semibold bg-gradient-to-r from-accent to-energy bg-clip-text text-transparent">
+            <span className="font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               {t('nav.gallery')}
             </span>
           </div>
@@ -78,7 +103,7 @@ export function GallerySection() {
         </div>
 
         {/* Mosaic Grid Gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 auto-rows-[200px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 auto-rows-[210px]">
           {images.map((image, index) => {
             // Elegant 3-column Mosaic Layout with new images
             const getGridClasses = () => {
@@ -91,28 +116,32 @@ export function GallerySection() {
             };
 
             return (
-              <div
+              <button
                 key={`${image.alt}-${index}`}
+                type="button"
                 onClick={() => openLightbox(index)}
-                className={`${getGridClasses()} relative group cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-500`}
+                className={`${getGridClasses()} relative group cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl shadow-card border border-primary/10 hover:border-energy/40 transition-all duration-500 hover:-translate-y-0.5 text-left`}
                 style={{ animationDelay: `${index * 50}ms` }}
+                aria-label={`Ouvrir l'image: ${image.alt}`}
               >
                 {/* Image */}
                 <img
                   src={image.src}
                   alt={image.alt}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:rotate-1"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                 />
+
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/35 to-primary/0 opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
                   <div className="flex items-end justify-between gap-4">
                     <div className="flex-1">
-                      <span className="inline-block px-2.5 py-1 bg-energy/90 backdrop-blur-sm text-primary text-[10px] sm:text-xs font-bold rounded-lg mb-2 shadow-lg">
+                      <span className="inline-block px-2.5 py-1 bg-white/20 border border-white/30 backdrop-blur-md text-secondary text-[10px] sm:text-xs font-semibold rounded-lg mb-2 shadow-lg">
                         {image.category}
                       </span>
                       <h3 className="text-secondary text-sm sm:text-base font-bold leading-tight">
@@ -120,19 +149,19 @@ export function GallerySection() {
                       </h3>
                     </div>
                     
-                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                       <ZoomIn className="w-5 h-5 text-secondary" />
+                    <div className="w-10 h-10 rounded-full bg-energy/90 border border-energy flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 shadow-lg">
+                       <ZoomIn className="w-5 h-5 text-primary" />
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
 
         {/* View More Button */}
         <div className="text-center mt-8 sm:mt-12">
-          <button className="group relative inline-flex items-center gap-3 py-3 sm:py-4 px-6 sm:px-8 bg-gradient-to-r from-primary to-primary/80 text-secondary rounded-full font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105">
+          <button className="group relative inline-flex items-center gap-3 py-3 sm:py-4 px-6 sm:px-8 bg-gradient-to-r from-primary to-primary/85 text-secondary rounded-full font-semibold tracking-wide text-sm sm:text-base overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 border border-primary/40">
             <span className="relative z-10">{t('gallery.viewMore')}</span>
             <Camera className="w-4 sm:w-5 h-4 sm:h-5 relative z-10 group-hover:rotate-12 transition-transform" />
             <div className="absolute inset-0 bg-gradient-to-r from-energy to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -143,13 +172,18 @@ export function GallerySection() {
       {/* Lightbox Modal */}
       {selectedImage !== null && (
         <div 
-          className="fixed inset-0 z-50 bg-primary/95 backdrop-blur-xl flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-primary/90 backdrop-blur-2xl flex items-center justify-center p-4"
           onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Visionneuse galerie"
         >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_45%)]" />
+
           {/* Close Button */}
           <button 
             onClick={closeLightbox}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-secondary hover:bg-energy hover:text-primary transition-all duration-300 hover:scale-110 z-50"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center text-secondary hover:bg-energy hover:text-primary transition-all duration-300 hover:scale-110 z-50"
             aria-label="Fermer"
           >
             <X className="w-6 h-6" />
@@ -158,14 +192,14 @@ export function GallerySection() {
           {/* Navigation Buttons */}
           <button 
             onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }}
-            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-secondary hover:bg-energy hover:text-primary transition-all duration-300 hover:scale-110 z-50"
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center text-secondary hover:bg-energy hover:text-primary transition-all duration-300 hover:scale-110 z-50"
             aria-label="Image précédente"
           >
             <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
           </button>
           <button 
             onClick={(e) => { e.stopPropagation(); navigateImage('next'); }}
-            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-secondary hover:bg-energy hover:text-primary transition-all duration-300 hover:scale-110 z-50"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center text-secondary hover:bg-energy hover:text-primary transition-all duration-300 hover:scale-110 z-50"
             aria-label="Image suivante"
           >
             <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
@@ -179,14 +213,14 @@ export function GallerySection() {
             <img
               src={images[selectedImage].src}
               alt={images[selectedImage].alt}
-              className="w-full h-full max-h-[70vh] object-contain rounded-2xl shadow-2xl"
+              className="w-full h-full max-h-[70vh] object-contain rounded-2xl shadow-2xl border border-white/15"
             />
             
             {/* Image Info */}
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-primary via-primary/80 to-transparent rounded-b-2xl">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="inline-block px-3 py-1 bg-energy text-primary text-xs font-bold rounded-full mb-2">
+                  <span className="inline-block px-3 py-1 bg-white/20 border border-white/25 text-secondary text-xs font-semibold rounded-full mb-2 backdrop-blur-md">
                     {images[selectedImage].category}
                   </span>
                   <p className="text-secondary text-sm sm:text-base font-medium">
@@ -201,18 +235,19 @@ export function GallerySection() {
           </div>
 
           {/* Thumbnails */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[90vw] px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[90vw] px-4 py-2 bg-white/10 border border-white/20 backdrop-blur-md rounded-full">
             {images.map((img, idx) => (
               <button
                 key={idx}
                 onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
                 className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
                   idx === selectedImage 
-                    ? 'ring-2 ring-energy scale-110' 
-                    : 'opacity-50 hover:opacity-100'
+                    ? 'ring-2 ring-energy scale-105 opacity-100' 
+                    : 'opacity-60 hover:opacity-100'
                 }`}
+                aria-label={`Voir miniature ${idx + 1}`}
               >
-                <img src={img.src} alt="" className="w-full h-full object-cover" />
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
               </button>
             ))}
           </div>

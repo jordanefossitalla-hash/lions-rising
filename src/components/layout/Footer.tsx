@@ -112,10 +112,10 @@ export function Footer() {
               <li className="flex items-center gap-2 sm:gap-3">
                 <Mail size={16} className="text-energy flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
                 <a
-                  href="mailto:contact@bmacademysport.com"
+                  href="mailto:bmasacademysport@gmail.com"
                   className="text-secondary/70 hover:text-energy transition-colors text-xs sm:text-sm break-all"
                 >
-                  contact@bmacademysport.com
+                  bmasacademysport@gmail.com
                 </a>
               </li>
             </ul>
