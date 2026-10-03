@@ -33,6 +33,7 @@ export const translations: Translations = {
   'stats.coaches': { fr: 'Encadreurs qualifiés', en: 'Qualified coaches' },
   'stats.years': { fr: 'Années d\'expérience', en: 'Years of experience' },
   'stats.categories': { fr: 'Catégories d\'âge', en: 'Age categories' },
+  'stats.passion': { fr: 'Engagement & Passion', en: 'Commitment & Passion' },
   
   // Programs
   'programs.title': { fr: 'Nos Programmes de Formation', en: 'Our Training Programs' },
@@ -49,7 +50,7 @@ export const translations: Translations = {
   // About
   'about.title': { fr: 'Notre Vision', en: 'Our Vision' },
   'about.subtitle': { fr: "L'excellence au service du football camerounais", en: 'Excellence in service of Cameroonian football' },
-  'about.description': { fr: "BM Academy Sport Yaoundé est née de la passion de son fondateur, Bakari Mahaman, pour le développement du football camerounais. Située au cœur de la Briqueterie à Yaoundé, notre académie forme plus de 70 jeunes talents âgés de 10 à 18 ans.", en: "BM Academy Sport Yaoundé was born from the passion of its founder, Bakari Mahaman, for the development of Cameroonian football. Located in the heart of Briqueterie in Yaoundé, our academy trains over 70 young talents aged 10 to 18." },
+  'about.description': { fr: "BM Academy Sport Yaoundé est née de la passion de son fondateur, Bakari Mahaman, pour le développement du football camerounais. Située à la nouvelle route Bastos (à l'Hôpital Bethesda) à Yaoundé, notre académie forme plus de 70 jeunes talents âgés de 5 à 18 ans (U5, U10, U13, U15, U16, U17, U18).", en: "BM Academy Sport Yaoundé was born from the passion of its founder, Bakari Mahaman, for the development of Cameroonian football. Located at Nouvelle Route Bastos (Bethesda Hospital) in Yaoundé, our academy trains over 70 young talents aged 5 to 18 (U5, U10, U13, U15, U16, U17, U18)." },
   'about.mission': { fr: "Notre mission : révéler les futurs Lions Indomptables en alliant rigueur technique, préparation physique d'excellence et éducation aux valeurs du sport.", en: "Our mission: to reveal the future Indomitable Lions by combining technical rigor, excellent physical preparation and education in sports values." },
   
   // Contact
@@ -61,7 +62,8 @@ export const translations: Translations = {
   'contact.subject': { fr: 'Sujet', en: 'Subject' },
   'contact.message': { fr: 'Message', en: 'Message' },
   'contact.send': { fr: 'Envoyer le message', en: 'Send message' },
-  'contact.address': { fr: 'Quartier Briqueterie, Yaoundé, Cameroun', en: 'Briqueterie District, Yaoundé, Cameroon' },
+  'contact.address': { fr: 'Hôpital Bethesda, Nouvelle Route Bastos, Yaoundé, Cameroun', en: 'Bethesda Hospital, Nouvelle Route Bastos, Yaoundé, Cameroon' },
+  'contact.trial_fee': { fr: 'Test d\'évaluation : 10 000 FCFA', en: 'Trial evaluation fee: 10,000 FCFA' },
   
   // Footer
   'footer.rights': { fr: 'Tous droits réservés', en: 'All rights reserved' },
@@ -109,7 +111,7 @@ export const translations: Translations = {
   'strengths.staff': { fr: 'Personnel motivé', en: 'Motivated staff' },
   'strengths.management': { fr: 'Management efficace', en: 'Efficient management' },
   'strengths.categories.title': { fr: 'Toutes les Catégories d\'Âge', en: 'All Age Categories' },
-  'strengths.categories.subtitle': { fr: 'Formation adaptée de 10 à 18 ans', en: 'Tailored training from 10 to 18 years' },
+  'strengths.categories.subtitle': { fr: 'Formation adaptée de 5 à 18 ans (U5 à U18)', en: 'Tailored training from 5 to 18 years (U5 to U18)' },
   'strengths.boys': { fr: 'Garçons', en: 'Boys' },
   'strengths.girls': { fr: 'Filles', en: 'Girls' },
 

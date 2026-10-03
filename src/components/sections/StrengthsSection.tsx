@@ -67,7 +67,7 @@ export function StrengthsSection() {
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                {['U10', 'U12', 'U13', 'U14', 'U15', 'U16', 'U17', 'U18'].map((cat) => (
+                {['U5', 'U10', 'U13', 'U15', 'U16', 'U17', 'U18'].map((cat) => (
                   <span
                     key={cat}
                     className="px-3 sm:px-4 py-1.5 sm:py-2 bg-energy text-primary font-bold rounded-full text-xs sm:text-sm hover:scale-110 transition-transform cursor-default"

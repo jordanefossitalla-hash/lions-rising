@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
-import { Player } from '@lottiefiles/react-lottie-player';
 import { useLanguage } from '@/contexts/LanguageContext';
-import emailAnimation from '@/assets/lottie/email.json';
 
 export function ContactSection() {
   const { t } = useLanguage();
@@ -80,7 +78,7 @@ export function ContactSection() {
     {
       icon: MapPin,
       title: 'Adresse',
-      content: 'Quartier Briqueterie, Yaoundé\nTerrain de Kalakouta, Cameroun',
+      content: 'Nouvelle Route Bastos (Hôpital Bethesda)\nYaoundé, Cameroun',
     },
     {
       icon: Phone,
@@ -94,31 +92,24 @@ export function ContactSection() {
     },
     {
       icon: Clock,
-      title: 'Horaires',
-      content: 'Lun - Sam: 08h00 - 18h00\nDimanche: Matchs uniquement',
+      title: 'Horaires & Essais',
+      content: 'Séance de test : 10 000 FCFA\nLun - Sam : 08h00 - 18h00',
     },
   ];
 
   return (
-    <section id="contact" className="py-16 sm:py-20 md:py-28 bg-background" aria-labelledby="contact-title">
+    <section id="contact" className="py-20 md:py-28 bg-muted/30" aria-labelledby="contact-title">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
-          <div className="flex justify-center mb-4">
-            <Player
-              autoplay
-              loop
-              src={emailAnimation}
-              className="w-20 h-20 sm:w-24 sm:h-24"
-            />
+        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-energy/10 text-energy text-xs sm:text-sm font-semibold tracking-wider uppercase mb-3">
+            <Mail className="w-3.5 h-3.5" />
+            <span>{t('nav.contact')}</span>
           </div>
-          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-energy/10 text-energy font-semibold rounded-full text-xs sm:text-sm mb-3 sm:mb-4">
-            {t('nav.contact')}
-          </span>
-          <h2 id="contact-title" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-3 sm:mb-4">
+          <h2 id="contact-title" className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-tight mb-4">
             {t('contact.title')}
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground px-2">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             {t('contact.subtitle')}
           </p>
         </div>
@@ -148,21 +139,21 @@ export function ContactSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary via-energy to-accent opacity-20 group-hover:opacity-30 transition-opacity duration-500 rounded-xl sm:rounded-2xl"></div>
               <div className="relative h-full w-full rounded-lg sm:rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1990.4!2d11.506652!3d3.878223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTInNDEuNiJOIDExwrAzMCcyMy45IkU!5e0!3m2!1sfr!2scm!4v1737561600000"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.6!2d11.5167!3d3.8833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSMO0cGl0YWwgQmV0aGVzZGE!5e0!3m2!1sfr!2scm!4v1737561600000"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Localisation BM Academy Sport Yaoundé"
+                  title="Localisation BM Academy Sport - Hôpital Bethesda Bastos"
                   className="grayscale-[30%] group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
                 />
               </div>
               {/* Map Overlay Label */}
               <div className="absolute bottom-3 left-3 right-3 bg-background/90 backdrop-blur-sm rounded-lg px-3 py-2 flex items-center gap-2 shadow-md opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="text-xs sm:text-sm font-medium text-foreground truncate">BM Academy Sport - Yaoundé</span>
+                <span className="text-xs sm:text-sm font-medium text-foreground truncate">BM Academy Sport • Hôpital Bethesda (Bastos)</span>
               </div>
             </div>
           </div>
@@ -246,7 +237,8 @@ export function ContactSection() {
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-muted border border-border rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-energy focus:border-transparent transition-all text-sm sm:text-base appearance-none"
                   >
                     <option value="">Sélectionner...</option>
-                    <option value="inscription">Inscription / Essai</option>
+                    <option value="test_10000f">Séance de test / Essai (10 000 FCFA)</option>
+                    <option value="inscription">Inscription Académie (U5 à U18)</option>
                     <option value="partenariat">Partenariat / Sponsoring</option>
                     <option value="information">Demande d'information</option>
                     <option value="autre">Autre</option>

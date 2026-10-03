@@ -96,8 +96,8 @@ export function Footer() {
               <li className="flex items-start gap-2 sm:gap-3">
                 <MapPin size={16} className="text-energy mt-0.5 flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
                 <span className="text-secondary/70 text-xs sm:text-sm leading-relaxed">
-                  Quartier Briqueterie, Yaoundé<br />
-                  Cameroun
+                  Nouvelle Route Bastos (Hôpital Bethesda)<br />
+                  Yaoundé, Cameroun
                 </span>
               </li>
               <li className="flex items-center gap-2 sm:gap-3">

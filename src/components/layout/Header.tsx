@@ -116,10 +116,8 @@ export function Header() {
 
             {/* CTA Button - Hidden on small mobile */}
             <a
-              href="https://wa.me/237621721892?text=Bonjour%2C%20je%20souhaite%20m'inscrire%20aux%20essais%20de%20BM%20Academy%20Sport."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:block btn-hero-primary text-xs sm:text-sm py-2 px-3 sm:px-4 md:px-6 whitespace-nowrap"
+              href="#contact"
+              className="hidden sm:inline-flex items-center justify-center btn-hero-primary text-xs sm:text-sm py-2 px-3 sm:px-4 md:px-5 whitespace-nowrap rounded-xl shadow-md"
             >
               {t('hero.cta.trials')}
             </a>
@@ -172,11 +170,9 @@ export function Header() {
               
               {/* Mobile CTA */}
               <a
-                href="https://wa.me/237621721892?text=Bonjour%2C%20je%20souhaite%20m'inscrire%20aux%20essais%20de%20BM%20Academy%20Sport."
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="btn-hero-primary text-center mt-6 sm:mt-8 text-base sm:text-lg py-4"
+                className="btn-hero-primary text-center mt-6 sm:mt-8 text-base sm:text-lg py-4 rounded-xl"
               >
                 {t('hero.cta.trials')}
               </a>
