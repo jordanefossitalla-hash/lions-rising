@@ -12,7 +12,12 @@ export function BallExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [kickCount, setKickCount] = useState(0);
-  const [showControls, setShowControls] = useState(true);
+  const [showControls, setShowControls] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 768;
+    }
+    return true;
+  });
 
   // References to communicate with Three.js from React events
   const kickTriggerRef = useRef<(() => void) | null>(null);
@@ -192,8 +197,8 @@ export function BallExperience() {
 
     const setInitialLayout = () => {
       if (isMobile()) {
-        ballGroup.position.set(0, -2.1, 0.5);
-        ballGroup.scale.setScalar(0.72);
+        ballGroup.position.set(0, -2.4, -0.6);
+        ballGroup.scale.setScalar(0.46);
       } else {
         ballGroup.position.set(3.3, -0.1, 1.2);
         ballGroup.scale.setScalar(1.0);
@@ -206,24 +211,25 @@ export function BallExperience() {
 
     const triggerKick = () => {
       setKickCount((prev) => prev + 1);
+      const baseScale = isMobile() ? 0.46 : 1.0;
 
       // Elastic squash & stretch animation
       gsap.timeline()
         .to(ballGroup.scale, {
-          x: (isMobile() ? 0.72 : 1.0) * 1.25,
-          y: (isMobile() ? 0.72 : 1.0) * 0.75,
+          x: baseScale * 1.25,
+          y: baseScale * 0.75,
           duration: 0.08,
           ease: 'power2.out',
         })
         .to(ballGroup.scale, {
-          x: (isMobile() ? 0.72 : 1.0) * 0.88,
-          y: (isMobile() ? 0.72 : 1.0) * 1.15,
+          x: baseScale * 0.88,
+          y: baseScale * 1.15,
           duration: 0.15,
           ease: 'elastic.out(1, 0.3)',
         })
         .to(ballGroup.scale, {
-          x: isMobile() ? 0.72 : 1.0,
-          y: isMobile() ? 0.72 : 1.0,
+          x: baseScale,
+          y: baseScale,
           duration: 0.25,
           ease: 'power2.out',
         });
@@ -275,13 +281,22 @@ export function BallExperience() {
         },
       });
 
-      // SECTION 1 -> 2: Home to About (Magnus Curve towards Founder / Values)
+      // SECTION 1 -> 2: Home to About (Slide to side, clear of text)
       tl.to(
         ballGroup.position,
         {
-          x: mobile ? 0 : -3.2,
-          y: mobile ? -0.4 : 0.2,
-          z: mobile ? 0.4 : 1.2,
+          x: mobile ? 1.3 : -3.2,
+          y: mobile ? -0.5 : 0.2,
+          z: mobile ? -0.8 : 1.2,
+          ease: 'power2.inOut',
+        },
+        'step1'
+      ).to(
+        ballGroup.scale,
+        {
+          x: mobile ? 0.40 : 1.0,
+          y: mobile ? 0.40 : 1.0,
+          z: mobile ? 0.40 : 1.0,
           ease: 'power2.inOut',
         },
         'step1'
@@ -295,13 +310,22 @@ export function BallExperience() {
         'step1'
       );
 
-      // SECTION 2 -> 3: About to Programs (Descent & Tactical Alignment)
+      // SECTION 2 -> 3: About to Programs (Alternate to opposite side)
       tl.to(
         ballGroup.position,
         {
-          x: mobile ? 0 : 3.4,
-          y: mobile ? -1.0 : -0.5,
-          z: mobile ? 0.2 : 0.8,
+          x: mobile ? -1.3 : 3.4,
+          y: mobile ? -0.9 : -0.5,
+          z: mobile ? -0.8 : 0.8,
+          ease: 'power2.inOut',
+        },
+        'step2'
+      ).to(
+        ballGroup.scale,
+        {
+          x: mobile ? 0.38 : 1.0,
+          y: mobile ? 0.38 : 1.0,
+          z: mobile ? 0.38 : 1.0,
           ease: 'power2.inOut',
         },
         'step2'
@@ -315,13 +339,22 @@ export function BallExperience() {
         'step2'
       );
 
-      // SECTION 3 -> 4: Programs to Talent (Shot into depth / Camera zoom)
+      // SECTION 3 -> 4: Programs to Talent (Depth / Video clear)
       tl.to(
         ballGroup.position,
         {
-          x: mobile ? 0 : -3.0,
-          y: mobile ? -0.2 : -0.3,
-          z: mobile ? 0.5 : 1.8,
+          x: mobile ? 1.3 : -3.0,
+          y: mobile ? -0.4 : -0.3,
+          z: mobile ? -1.0 : 1.8,
+          ease: 'power2.inOut',
+        },
+        'step3'
+      ).to(
+        ballGroup.scale,
+        {
+          x: mobile ? 0.35 : 1.0,
+          y: mobile ? 0.35 : 1.0,
+          z: mobile ? 0.35 : 1.0,
           ease: 'power2.inOut',
         },
         'step3'
@@ -335,13 +368,22 @@ export function BallExperience() {
         'step3'
       );
 
-      // SECTION 4 -> 5: Talent to Gallery (Orbit across mosaic)
+      // SECTION 4 -> 5: Talent to Gallery (Orbit / Bento clear)
       tl.to(
         ballGroup.position,
         {
-          x: mobile ? 0 : 3.0,
-          y: mobile ? -0.3 : 0.4,
-          z: mobile ? 0.3 : 0.9,
+          x: mobile ? -1.3 : 3.0,
+          y: mobile ? 0.2 : 0.4,
+          z: mobile ? -1.2 : 0.9,
+          ease: 'power2.inOut',
+        },
+        'step4'
+      ).to(
+        ballGroup.scale,
+        {
+          x: mobile ? 0.32 : 1.0,
+          y: mobile ? 0.32 : 1.0,
+          z: mobile ? 0.32 : 1.0,
           ease: 'power2.inOut',
         },
         'step4'
@@ -355,13 +397,22 @@ export function BallExperience() {
         'step4'
       );
 
-      // SECTION 5 -> 6: Gallery to CTA (Victorious Center Stage above 10 000 FCFA CTA)
+      // SECTION 5 -> 6: Gallery to CTA (On desktop: Center stage / On mobile: tucked high in background, completely clear of 10 000 FCFA & buttons)
       tl.to(
         ballGroup.position,
         {
           x: 0,
-          y: mobile ? 0.8 : 0.5,
-          z: mobile ? 1.0 : 2.2,
+          y: mobile ? 2.8 : 0.5,
+          z: mobile ? -3.0 : 2.2,
+          ease: 'power2.out',
+        },
+        'step5'
+      ).to(
+        ballGroup.scale,
+        {
+          x: mobile ? 0.20 : 1.05,
+          y: mobile ? 0.20 : 1.05,
+          z: mobile ? 0.20 : 1.05,
           ease: 'power2.out',
         },
         'step5'
@@ -375,13 +426,22 @@ export function BallExperience() {
         'step5'
       );
 
-      // SECTION 6 -> 7: CTA to Contact (Resting on side podium)
+      // SECTION 6 -> 7: CTA to Contact & Footer (On mobile: slides out completely into lower depth so form & footer are 100% visible)
       tl.to(
         ballGroup.position,
         {
-          x: mobile ? 0 : 3.2,
-          y: mobile ? -1.5 : -1.0,
-          z: mobile ? -0.2 : 0.4,
+          x: mobile ? 1.5 : 3.2,
+          y: mobile ? -5.0 : -1.0,
+          z: mobile ? -6.0 : 0.4,
+          ease: 'power2.inOut',
+        },
+        'step6'
+      ).to(
+        ballGroup.scale,
+        {
+          x: mobile ? 0.05 : 0.9,
+          y: mobile ? 0.05 : 0.9,
+          z: mobile ? 0.05 : 0.9,
           ease: 'power2.inOut',
         },
         'step6'
@@ -443,7 +503,6 @@ export function BallExperience() {
 
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('click', onPointerDown);
-    window.addEventListener('touchstart', onPointerDown, { passive: true });
 
     // --- 10. RESIZE HANDLER ---
     const onResize = () => {
@@ -534,7 +593,6 @@ export function BallExperience() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('click', onPointerDown);
-      window.removeEventListener('touchstart', onPointerDown);
       window.removeEventListener('resize', onResize);
       document.body.style.cursor = 'default';
 
@@ -566,9 +624,9 @@ export function BallExperience() {
       <div ref={containerRef} className="fixed inset-0 pointer-events-none z-10" aria-hidden="true" />
 
       {/* Floating HUD Pill: 3D Indicator & Interactive Controller */}
-      <div className="fixed bottom-6 left-6 z-30 transition-all duration-500">
+      <div className="fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-30 transition-all duration-500">
         {showControls ? (
-          <div className="bg-primary/85 backdrop-blur-md border border-energy/30 rounded-2xl p-3 sm:p-4 shadow-2xl flex items-center gap-3 sm:gap-4 text-secondary max-w-xs sm:max-w-sm animate-in fade-in slide-in-from-bottom-4">
+          <div className="bg-primary/90 backdrop-blur-md border border-energy/30 rounded-2xl p-3 sm:p-4 shadow-2xl flex items-center gap-3 sm:gap-4 text-secondary max-w-[280px] sm:max-w-sm animate-in fade-in slide-in-from-bottom-4">
             <div className="relative flex-shrink-0">
               <button
                 onClick={() => kickTriggerRef.current?.()}
@@ -609,7 +667,7 @@ export function BallExperience() {
         ) : (
           <button
             onClick={() => setShowControls(true)}
-            className="w-10 h-10 rounded-full bg-primary/90 hover:bg-primary border border-energy/40 text-energy flex items-center justify-center shadow-xl hover:scale-110 transition-all cursor-pointer"
+            className="w-10 h-10 rounded-full bg-primary/95 hover:bg-primary border border-energy/40 text-energy flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all cursor-pointer backdrop-blur-md"
             title="Afficher les contrôles 3D"
           >
             <RotateCw className="w-4 h-4" />

@@ -25,7 +25,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground" role="contentinfo">
+    <footer className="bg-primary text-primary-foreground relative z-20" role="contentinfo">
       {/* Back to top button */}
       <div className="relative">
         <button
@@ -112,10 +112,10 @@ export function Footer() {
               <li className="flex items-center gap-2 sm:gap-3">
                 <Mail size={16} className="text-energy flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
                 <a
-                  href="mailto:bmasacademysport@gmail.com"
+                  href="mailto:mahamanbakari697@gmail.com"
                   className="text-secondary/70 hover:text-energy transition-colors text-xs sm:text-sm break-all"
                 >
-                  bmasacademysport@gmail.com
+                  mahamanbakari697@gmail.com
                 </a>
               </li>
             </ul>

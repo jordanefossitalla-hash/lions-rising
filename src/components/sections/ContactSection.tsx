@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 export function ContactSection() {
   const { t } = useLanguage();
-  const CONTACT_EMAIL = 'bmasacademysport@gmail.com';
+  const CONTACT_EMAIL = 'mahamanbakari697@gmail.com';
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -88,7 +88,7 @@ export function ContactSection() {
     {
       icon: Mail,
       title: 'Email',
-      content: 'bmasacademysport@gmail.com',
+      content: 'mahamanbakari697@gmail.com',
     },
     {
       icon: Clock,
@@ -98,7 +98,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-muted/30" aria-labelledby="contact-title">
+    <section id="contact" className="py-20 md:py-28 bg-muted/30 relative z-20" aria-labelledby="contact-title">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
